@@ -1,15 +1,18 @@
- import React from 'react';
- import ReactDOM from 'react-dom';
- import SeasonDisplay from './SeasonDisplay';
+import React from "react";
+import ReactDOM from "react-dom";
+import SeasonDisplay from "./SeasonDisplay";
 
- const App = () => {
+const App = () => {
+  window.navigator.geolocation.getCurrentPosition(
+    (position) => console.log(position),
+    (err) => console.log(err)
+  );
   return (
     <div>
       <div>Seasons</div>
       <SeasonDisplay />
     </div>
-
   );
- };
+};
 
- ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(<App />, document.querySelector("#root"));
