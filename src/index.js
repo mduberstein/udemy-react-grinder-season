@@ -1,3 +1,4 @@
+import './style/App.css'
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
@@ -33,7 +34,7 @@ class App extends React.Component {
   // render is required by React
   render() {
     console.log("In render method");
-    return <div style={{border: '5px solid red'}}>{this.renderContent()}</div>;
+    return <div style={{border: '5px solid black'}}>{this.renderContent()}</div>;
   }
 }
 
