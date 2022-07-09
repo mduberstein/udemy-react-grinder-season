@@ -4,20 +4,29 @@ import SeasonDisplay from "./SeasonDisplay";
 
 class App extends React.Component {
   constructor (props) {
-    // call to parent constructor
+    //a must call to parent constructor
     super(props);
+    // THIS IS THE ONLY TIME we do direct assignment to this.state
     this.state = { lat: null };
+
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => {
+        // we called setState, defined in React.Component
+        this.setState({lat: position.coords.latitude})
+
+        // BAD, doesn't work except if done one time in the constructor
+        // this.state.lat = positions.coords.latitude
+      },
+      (err) => console.log(err)
+    );
   }
 
   // render is required by React
   render () {
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => console.log(position),
-      (err) => console.log(err)
-    );
+
     return (
       <div>
-        <div>Latitude: </div>
+        <div>Latitude: {this.state.lat}</div>
         <SeasonDisplay />
       </div>
     );
