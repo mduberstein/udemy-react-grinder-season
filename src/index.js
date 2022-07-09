@@ -7,26 +7,28 @@ class App extends React.Component {
     //a must call to parent constructor
     super(props);
     // THIS IS THE ONLY TIME we do direct assignment to this.state
-    this.state = { lat: null };
+    this.state = { lat: null, errorMessage: '' };
 
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         // we called setState, defined in React.Component
         this.setState({lat: position.coords.latitude})
-
-        // BAD, doesn't work except if done one time in the constructor
-        // this.state.lat = positions.coords.latitude
       },
-      (err) => console.log(err)
+      (err) => {
+        this.setState({errorMessage: err.message});
+      }
     );
   }
 
   // render is required by React
   render () {
-
     return (
       <div>
-        <div>Latitude: {this.state.lat}</div>
+        <div>
+          Latitude: {this.state.lat}
+          <br />
+          Error: {this.state.errorMessage}
+        </div>
         <SeasonDisplay />
       </div>
     );
