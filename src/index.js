@@ -3,12 +3,14 @@ import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
 
 class App extends React.Component {
-  constructor (props) {
-    //a must call to parent constructor
-    super(props);
-    // THIS IS THE ONLY TIME we do direct assignment to this.state
-    this.state = { lat: null, errorMessage: '' };
-  }
+  // constructor (props) {
+  //   //a must call to parent constructor
+  //   super(props);
+  //   // THIS IS THE ONLY TIME we do direct assignment to this.state
+  //   this.state = { lat: null, errorMessage: '' };
+  // }
+
+  state = { lat: null, errorMessage: '' };
 
   componentDidMount (){
     console.log('In componentDidMount: My component was rendered to the screen');
