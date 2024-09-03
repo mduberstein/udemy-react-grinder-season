@@ -18,7 +18,7 @@ const getSeason = (lat, month) => {
     return lat > 0 ? "summer" : "winter";
   } else {
     // nothern hemisphere : sothern hemispher
-    return lat > 0 ? "winter" : "winter";
+    return lat > 0 ? "winter" : "summer";
   }
 };
 
